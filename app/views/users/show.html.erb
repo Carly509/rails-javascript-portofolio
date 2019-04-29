@@ -1,0 +1,24 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+     
+      <h1><%= @user.username %></h1>
+      <h3>Create New Tweet: <%= link_to 'New Tweet', new_tweet_path(@tweets) %></h3>
+      
+      <span><b>Tweets:</b> <%= @user.tweets.count %></span>
+      <ul>
+ <% @user.tweets.reverse.each do |tweet| %>
+ <strong><%= link_to tweet.user.username, tweet_path(tweet.user_id) %></strong>
+ <%= tweet.created_at.strftime("%d %b %Y at %I:%M %p") %>
+ <p><%= tweet.tweet %></p>
+  — — — — — — — — — — — — — — — — — — — — — — — — — — — -
+ <br><br>
+ <% end %>
+</ul>
+      </br>
+      <span><%= link_to "Back", root_path %></span>
+   
+  </aside>
+  
+</div>

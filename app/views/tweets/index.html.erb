@@ -1,0 +1,38 @@
+<section class="section">
+  <div class="container">
+<div class="columns">
+    	<% if logged_in? %>
+   
+    <h3>Current User: @<%= current_user.username %></h3>
+    </br>
+    </br>
+    </br>
+<h3>Create New Tweet: <%= link_to "New Tweet", new_tweet_path(@tweets) %></h3>
+
+<ul>
+ <% @tweets.reverse.each do |tweet| %>
+ <strong><%= link_to tweet.user.username, user_path(tweet.user_id) %></strong>
+ <%= tweet.created_at.strftime("%d %b %Y at %I:%M %p") %>
+ <p><%= tweet.tweet %></p>
+  — — — — — — — — — — — — — — — — — — — — — — — — — — — -
+ <br><br>
+ <% end %>
+</ul>
+</div>
+</div>
+</section>
+
+
+    	<% else %>
+      <div class= "wrapper">
+        <%= render partial: 'sessions/form' %>
+      </div>
+    
+
+      <% end %>
+
+       
+                     
+       
+      
+   
